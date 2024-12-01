@@ -1,25 +1,20 @@
 const express = require('express');
 const app = express();
 require('dotenv').config();
+const path = require('node:path');
 
-//  Import db
-const db = require('./db/queries');
+// Import routers
+const indexRouter = require('./routes/indexRouter');
 
 // Middleware to parse URL-encoded data
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/', async (req, res) => {
-  try {
-    const seasons = await db.getAllSeasons();
-    if (seasons.length === 0) {
-      return res.status(404).send('No seasons found.');
-    }
-    res.status(200).send(seasons[0].season);
-  } catch (error) {
-    console.error('Error fetching seasons: ', error);
-    res.status(500).send('Internal Server Ewrror');
-  }
-});
+// Set view engine
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
+// Define routes
+app.get('/', indexRouter);
 
 const port = process.env.PORT;
 
