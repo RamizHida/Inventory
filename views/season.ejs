@@ -2,7 +2,15 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Document</title>
+
+    <title><%= title %></title>
   </head>
-  <body></body>
+  <body>
+    <h1>Let's create a season</h1>
+    <form method="POST" action="/season/uniqueSeason">
+      <label for="season">Season Name: </label>
+      <input type="text" id="season" name="season" minlength="4" />
+      <button type="submit">Submit</button>
+    </form>
+  </body>
 </html>
