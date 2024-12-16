@@ -1,29 +1,32 @@
 // Import db
-const { create } = require('lodash');
 const db = require('../db/queries');
 
 function getNewSeason(req, res) {
   res.render('season', { title: 'Season Form' });
 }
 
-const insertSeason = async (req, res) => {
-  try {
-    const result = await db.insertSeason(req.body.season);
-    console.log(result);
-  } catch (error) {
-    console.error('Error: ', error);
-    res.status(500).send('Internal Server Error');
-  }
-};
-
 const createNewSeason = async (req, res) => {
-  //
-  const { season } = req.body;
   try {
-    res.render('uniqueSeason', {
-      title: 'Unique Season',
-      value: season,
-    });
+    const { season } = req.body;
+
+    // remove white spaces
+    season.trim();
+
+    // Validate input
+    if (!season || typeof season !== 'string' || season.trim().length < 4) {
+      return res.render('seasonError');
+    }
+
+    // Insert New Season into db
+    const result = await db.insertSeason(season);
+
+    // Insert New Season into db
+
+    if (!result) {
+      return res.render('seasonError');
+    }
+
+    res.redirect('/');
   } catch (error) {
     console.error('Error: ', error);
     res.status(500).send('Internal Server Error');

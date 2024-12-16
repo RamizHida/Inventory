@@ -7,6 +7,8 @@ const {
 const seasonRouter = Router();
 
 seasonRouter.get('/', getNewSeason);
-seasonRouter.post('/uniqueSeason', createNewSeason);
+
+// Handle form submission for season creation
+seasonRouter.post('/newSeason', createNewSeason);
 
 module.exports = seasonRouter;

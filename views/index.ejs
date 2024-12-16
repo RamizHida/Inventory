@@ -6,8 +6,13 @@
   </head>
   <body>
     <h1>Welcome to the <%= title %>!</h1>
-    The current Season at this time is <%= seasons%>
+    <h2>Seasons at this time are</h2>
+    <% for (let index = 0; index < seasons.length; index++) { %>
+    <li><%= seasons[index].season %></li>
+    <% } %>
 
-    <a href="/season">Create a season</a>
+    <div>
+      <a href="/season">Create a season</a>
+    </div>
   </body>
 </html>
