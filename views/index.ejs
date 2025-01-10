@@ -8,7 +8,19 @@
     <h1>Welcome to the <%= title %>!</h1>
     <h2>Seasons at this time are</h2>
     <% for (let index = 0; index < seasons.length; index++) { %>
-    <li><%= seasons[index].season %></li>
+    <div
+      style="
+        padding: 20px;
+        margin: 20px;
+        border: 1px solid red;
+        width: 100px;
+        text-align: center;
+      "
+    >
+      <a href="/season/<%=seasons[index].season%>">
+        <li style="list-style: none"><%= seasons[index].season %></li>
+      </a>
+    </div>
     <% } %>
 
     <div>

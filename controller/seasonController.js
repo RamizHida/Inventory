@@ -33,7 +33,28 @@ const createNewSeason = async (req, res) => {
   }
 };
 
+const showSeasonDetails = async (req, res) => {
+  try {
+    const { season } = req.params;
+    const holidayDetails = await db.getHolidaysFromSeason(season);
+    if (!holidayDetails) {
+      res.render('lonelySeason', { season: season });
+    }
+
+    if (season) {
+      res.render('seasonDetails', {
+        title: season,
+        holidayDetails: holidayDetails,
+      });
+    }
+  } catch (error) {
+    console.error('Error: ', error);
+    res.status(500).send('Internal Server Error');
+  }
+};
+
 module.exports = {
   getNewSeason,
   createNewSeason,
+  showSeasonDetails,
 };

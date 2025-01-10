@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>No Holidays in <%= season %></title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f8ff;
+        color: #333;
+        text-align: center;
+        margin: 0;
+        padding: 20px;
+      }
+      .container {
+        margin: auto;
+        padding: 20px;
+        max-width: 600px;
+        background: #fff3cd;
+        border: 2px dashed #ffcc00;
+        border-radius: 10px;
+      }
+      h1 {
+        color: #ff4500;
+      }
+      p {
+        font-size: 1.2em;
+        line-height: 1.6;
+      }
+      .crying-face {
+        font-size: 5em;
+        margin: 20px 0;
+      }
+      a {
+        text-decoration: none;
+        color: #007bff;
+        font-weight: bold;
+      }
+      a:hover {
+        color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>No Holidays in <%= season %>?!</h1>
+      <div class="crying-face">😭</div>
+      <p>
+        It’s <%= season %>, and guess what? No holidays. Not even a single day
+        off to binge-watch your favorite series, eat way too much, or stay in
+        your pajamas all day.
+      </p>
+      <p>
+        Looks like we’re stuck with work, chores, and pretending to be
+        productive. Yay? 🙄
+      </p>
+      <p>
+        Maybe it's time to make up your own holiday! Happy "<%= season %> Couch
+        Potato Day" to you! 🎉
+      </p>
+      <p>
+        Feeling adventurous? <a href="/">Click here</a> to find a season with
+        some actual holidays!
+      </p>
+    </div>
+  </body>
+</html>
