@@ -2,29 +2,118 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title><%= title %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Seaons App</title>
+    <style>
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f0f0f0;
+        color: #333;
+        margin: 0;
+        padding: 40px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      h1 {
+        font-size: 2.8em;
+        color: #388e3c;
+        margin-bottom: 15px;
+        text-align: center;
+      }
+
+      h2 {
+        font-size: 1.6em;
+        color: #555;
+        margin-bottom: 30px;
+        text-align: center;
+      }
+
+      .season-container {
+        display: grid;
+        grid-template-columns: repeat(
+          auto-fill,
+          minmax(280px, 1fr)
+        ); /* Responsive grid */
+        gap: 30px; /* Increased gap between items */
+        justify-items: center;
+        width: 100%;
+        max-width: 1200px; /* Control the maximum width */
+        margin-bottom: 40px; /* Add bottom margin to separate from other content */
+      }
+
+      .season-card {
+        padding: 25px;
+        margin: 15px; /* Added margin for better separation between cards */
+        border: 2px solid #388e3c;
+        border-radius: 12px;
+        background: #fff;
+        text-align: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s, box-shadow 0.2s;
+        width: 80%;
+      }
+
+      .season-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+      }
+
+      .season-card a {
+        text-decoration: none;
+        color: #388e3c;
+        font-weight: bold;
+        font-size: 1.4em;
+        transition: color 0.3s;
+      }
+
+      .season-card a:hover {
+        color: #4caf50;
+      }
+
+      .season-card li {
+        list-style: none;
+        font-size: 1.1em;
+        color: #666;
+      }
+
+      .create-season {
+        margin-top: 40px;
+        text-align: center;
+      }
+
+      .create-season a {
+        text-decoration: none;
+        color: #fff;
+        background-color: #388e3c;
+        padding: 12px 25px;
+        border-radius: 8px;
+        font-size: 1.3em;
+        font-weight: bold;
+        transition: background-color 0.3s, transform 0.2s;
+      }
+
+      .create-season a:hover {
+        background-color: #4caf50;
+        transform: translateY(-3px);
+      }
+    </style>
   </head>
   <body>
-    <h1>Welcome to the <%= title %>!</h1>
-    <h2>Seasons at this time are</h2>
-    <% for (let index = 0; index < seasons.length; index++) { %>
-    <div
-      style="
-        padding: 20px;
-        margin: 20px;
-        border: 1px solid red;
-        width: 100px;
-        text-align: center;
-      "
-    >
-      <a href="/season/<%=seasons[index].season%>">
-        <li style="list-style: none"><%= seasons[index].season %></li>
-      </a>
+    <h2>Seasons at this time are:</h2>
+    <div class="season-container">
+      <% for (let index = 0; index < seasons.length; index++) { %>
+      <div class="season-card">
+        <a href="/season/<%=seasons[index].season%>">
+          <li><%= seasons[index].season %></li>
+        </a>
+      </div>
+      <% } %>
     </div>
-    <% } %>
 
-    <div>
-      <a href="/season">Create a season</a>
+    <div class="create-season">
+      <a href="/season">Create a Season</a>
     </div>
   </body>
 </html>

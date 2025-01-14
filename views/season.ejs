@@ -2,14 +2,80 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= title %></title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f8ff;
+        color: #333;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+      }
+
+      h1 {
+        font-size: 2em;
+        color: #004d99;
+        margin-bottom: 20px;
+      }
+
+      form {
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+        text-align: center;
+      }
+
+      label {
+        font-weight: bold;
+        display: block;
+        margin: 10px 0 5px;
+      }
+
+      input {
+        width: 90%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+
+      button {
+        background-color: #004d99;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      button:hover {
+        background-color: #003366;
+      }
+    </style>
   </head>
   <body>
-    <h1>Let's create a season</h1>
+    <h1>Let's Create a Season</h1>
     <form method="POST" action="/season/newSeason">
-      <label for="season">Season Name: </label>
-      <input required id="season" name="season" minlength="4" />
+      <label for="season">Season Name:</label>
+      <input
+        required
+        id="season"
+        name="season"
+        minlength="4"
+        placeholder="Enter season name"
+      />
       <button type="submit">Submit</button>
     </form>
   </body>
