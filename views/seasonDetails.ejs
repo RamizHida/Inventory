@@ -126,6 +126,10 @@
       a:hover {
         transform: scale(1.1);
       }
+
+      button {
+        width: 30%;
+      }
     </style>
   </head>
   <body>
@@ -138,6 +142,15 @@
           <li><%= holiday.date %></li>
           <li><%= holiday.description %></li>
         </ul>
+        <form
+          method="POST"
+          action="/season/deleteHoliday/<%= holiday.title %>"
+          style="display: inline"
+        >
+          <button onclick="alert('Are You sure you want to delete?')">
+            Delete
+          </button>
+        </form>
       </div>
       <% }) %>
     </div>

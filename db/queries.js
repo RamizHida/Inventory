@@ -88,7 +88,15 @@ async function insertHoliday(season, holidayName, holidayDesc) {
   }
 }
 
-async function deleteHoliday(holidayName) {}
+async function deleteHoliday(holidayName) {
+  try {
+    await pool.query(`DELETE FROM special_days WHERE title = $1`, [
+      holidayName,
+    ]);
+  } catch (error) {
+    console.error('Error deleting record:', err);
+  }
+}
 
 module.exports = {
   getAllSeasons,

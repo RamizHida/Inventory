@@ -36,7 +36,7 @@ const showSeasonDetails = async (req, res) => {
   try {
     const { season } = req.params;
     const holidayDetails = await db.getHolidaysFromSeason(season);
-    console.log(holidayDetails);
+    // console.log(holidayDetails);
     if (!holidayDetails) {
       return res.render('lonelySeason', { season: season });
     }
@@ -75,9 +75,21 @@ const createNewHoliday = async (req, res) => {
   }
 };
 
+const deleteHoliday = async (req, res) => {
+  const holidayTitle = req.params.holidayName;
+  try {
+    await db.deleteHoliday(holidayTitle);
+    res.redirect('/');
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error deleting holiday');
+  }
+};
+
 module.exports = {
   getNewSeason,
   createNewSeason,
   showSeasonDetails,
   createNewHoliday,
+  deleteHoliday,
 };

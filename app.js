@@ -1,7 +1,10 @@
 const express = require('express');
+const methodOverride = require('method-override');
 const app = express();
 require('dotenv').config();
 const path = require('node:path');
+
+app.use(methodOverride('_method')); //  override  HTTP method
 
 // Serve static files from the "public" directory
 app.use(express.static(path.join(__dirname, 'public')));

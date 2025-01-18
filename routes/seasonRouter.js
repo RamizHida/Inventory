@@ -4,6 +4,7 @@ const {
   createNewSeason,
   showSeasonDetails,
   createNewHoliday,
+  deleteHoliday,
 } = require('../controller/seasonController');
 
 const seasonRouter = Router();
@@ -15,6 +16,9 @@ seasonRouter.post('/newSeason', createNewSeason);
 
 // Handle form submission for holiday creation
 seasonRouter.post('/newHoliday', createNewHoliday);
+
+// Handle form submission for holiday deletion
+seasonRouter.post('/deleteHoliday/:holidayName', deleteHoliday);
 
 seasonRouter.get('/:season', showSeasonDetails);
 
