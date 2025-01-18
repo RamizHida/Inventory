@@ -88,9 +88,12 @@ async function insertHoliday(season, holidayName, holidayDesc) {
   }
 }
 
+async function deleteHoliday(holidayName) {}
+
 module.exports = {
   getAllSeasons,
   insertSeason,
   getHolidaysFromSeason,
   insertHoliday,
+  deleteHoliday,
 };
