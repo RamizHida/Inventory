@@ -207,9 +207,18 @@
         formContainer.style.display = isFormVisible ? 'none' : 'block';
         toggleFormBtn.textContent = isFormVisible ? 'Open Form' : 'Close Form';
       });
+
       closeFormBtn.addEventListener('click', () => {
         formContainer.style.display = 'none';
         toggleFormBtn.textContent = 'Open Form';
+      });
+
+      // Close form with esc key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          formContainer.style.display = 'none';
+          toggleFormBtn.textContent = 'Open Form';
+        }
       });
     </script>
   </body>
