@@ -100,16 +100,20 @@
         height: 100px;
       }
 
-      form button {
+      button {
         background-color: #007bff;
         color: #fff;
         border: none;
         cursor: pointer;
         font-weight: bold;
         transition: background-color 0.3s;
+        padding: 13px;
+        font-size: 1rem;
+        border-radius: 5px;
+        margin-bottom: 10px;
       }
 
-      form button:hover {
+      button:hover {
         background-color: #0056b3;
       }
 
@@ -125,10 +129,6 @@
 
       a:hover {
         transform: scale(1.1);
-      }
-
-      button {
-        width: 30%;
       }
     </style>
   </head>
@@ -160,39 +160,57 @@
       <span><%= season %></span> below!
     </p>
 
-    <form method="POST" action="/season/newHoliday">
-      <label for="newHoliday">Holiday Name:</label>
-      <input
-        required
-        type="text"
-        id="newHoliday"
-        name="newHoliday"
-        minlength="4"
-      />
-      <label for="seaon">Season: </label>
-      <input
-        type="text"
-        id="season"
-        name="season"
-        readonly
-        value="<%= season %>"
-      />
+    <button type="button" id="toggleFormBtn">Open Form</button>
+    <div id="formContainer" style="display: none">
+      <form method="POST" action="/season/newHoliday">
+        <label for="newHoliday">Holiday Name:</label>
+        <input
+          required
+          type="text"
+          id="newHoliday"
+          name="newHoliday"
+          minlength="4"
+        />
+        <label for="seaon">Season: </label>
+        <input
+          type="text"
+          id="season"
+          name="season"
+          readonly
+          value="<%= season %>"
+        />
 
-      <label for="holidayDesc">Holiday Description:</label>
-      <textarea
-        minlength="10"
-        maxlength="255"
-        id="holidayDesc"
-        name="holidayDesc"
-        required
-      ></textarea>
+        <label for="holidayDesc">Holiday Description:</label>
+        <textarea
+          minlength="10"
+          maxlength="255"
+          id="holidayDesc"
+          name="holidayDesc"
+          required
+        ></textarea>
 
-      <label for="password">Secret Password:</label>
-      <input required type="password" id="password" name="password" />
+        <label for="password">Secret Password:</label>
+        <input required type="password" id="password" name="password" />
 
-      <button type="submit">Submit</button>
-    </form>
-
+        <button type="submit">Submit</button>
+        <button type="button" id="closeFormButton">Close</button>
+      </form>
+    </div>
     <a href="/">Back</a>
+    <script>
+      const formContainer = document.getElementById('formContainer');
+      const toggleFormBtn = document.getElementById('toggleFormBtn');
+      const closeFormBtn = document.getElementById('closeFormButton');
+
+      toggleFormBtn.addEventListener('click', () => {
+        const isFormVisible = formContainer.style.display === 'block';
+        formContainer.style.display = isFormVisible ? 'none' : 'block';
+        toggleFormBtn.textContent = isFormVisible ? 'Open Form' : 'Close Form';
+      });
+      closeFormBtn.addEventListener('click', () => {
+        formContainer.style.display = 'none';
+        toggleFormBtn.textContent = 'Open Form';
+      });
+    </script>
   </body>
 </html>
