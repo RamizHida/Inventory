@@ -77,9 +77,12 @@ const createNewHoliday = async (req, res) => {
 
 const deleteHoliday = async (req, res) => {
   const holidayTitle = req.params.holidayName;
+  const season = req.params.season;
+  console.log(season);
+
   try {
     await db.deleteHoliday(holidayTitle);
-    res.redirect('/');
+    res.redirect(`/season/${season}`);
   } catch (error) {
     console.error(error);
     res.status(500).send('Error deleting holiday');

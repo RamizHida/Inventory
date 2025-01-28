@@ -18,7 +18,7 @@ seasonRouter.post('/newSeason', createNewSeason);
 seasonRouter.post('/newHoliday', createNewHoliday);
 
 // Handle form submission for holiday deletion
-seasonRouter.post('/deleteHoliday/:holidayName', deleteHoliday);
+seasonRouter.post('/deleteHoliday/:season/:holidayName', deleteHoliday);
 
 seasonRouter.get('/:season', showSeasonDetails);
 
